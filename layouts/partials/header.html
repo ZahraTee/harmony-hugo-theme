@@ -1,0 +1,27 @@
+<header class="header">
+    <a href="{{ .Site.BaseURL }}">{{- partial "logo.html" . -}}</a>
+	<nav class="main-nav">
+		<ul>
+			{{ $currentPage := . }}
+			{{ range .Site.Menus.main }}
+				{{ if .HasChildren }}
+			<li class="sub-menu{{if $currentPage.HasMenuCurrent "main" . }} active{{end}}">
+				{{ .Pre }}
+				<div>{{ .Name }} <span class="caret"></span></div>
+			<ul class="sub">
+				{{ range .Children }}
+				<li{{if $currentPage.IsMenuCurrent "main" . }} class="active"{{end}}><a href="{{.URL}}"> {{ .Name }} </a> </li>
+				{{ end }}
+			</ul>
+			{{else}}
+			<li>
+			<a href="{{.URL}}">
+				{{ .Pre }}
+				<div>{{ .Name }} <span class="caret"></span></div>
+			</a>
+			{{end}}
+			</li>
+			{{end}}
+		</ul>
+	</nav>
+</header>
