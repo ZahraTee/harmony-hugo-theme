@@ -1,27 +1,21 @@
 <header class="header">
     <a href="{{ .Site.BaseURL }}" alt="Back to homepage" class="logo">{{- partial "logo.html" . -}}</a>
 	<nav class="main-nav">
-		<div class="mobile">Menu<span class="caret"></span></div>
+		<div class="mobile">Menu</div>
 		<ul>
 			{{ $currentPage := . }}
 			{{ range .Site.Menus.main }}
 				{{ if .HasChildren }}
-			<li class="sub-menu{{if $currentPage.HasMenuCurrent "main" . }} active{{end}}">
-				{{ .Pre }}
-				<div>{{ .Name }}<span class="caret"></span></div>
-			<ul class="sub">
-				{{ range .Children }}
-				<li{{if $currentPage.IsMenuCurrent "main" . }} class="active"{{end}}><a href="{{.URL}}"> {{ .Name }} </a> </li>
-				{{ end }}
-			</ul>
-			{{else}}
-			<li>
-			<a href="{{.URL}}">
-				{{ .Pre }}
-				<div>{{ .Name }} <span class="caret"></span></div>
-			</a>
-			{{end}}
-			</li>
+					<li class="sub-menu{{if $currentPage.HasMenuCurrent "main" . }} active{{end}}">
+						{{ .Pre }}
+						<div>{{ .Name }}</div>
+						<ul class="sub">
+							{{ range .Children }}
+							<li{{if $currentPage.IsMenuCurrent "main" . }} class="active"{{end}}><a href="{{.URL}}"> {{ .Name }} </a> </li>
+							{{ end }}
+						</ul>
+					</li>
+					{{end}}
 			{{end}}
 		</ul>
 		<a class="login">Log In</a>

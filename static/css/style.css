@@ -6,6 +6,7 @@
 
 * {
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
 
 html {
@@ -25,12 +26,32 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    line-height: 1.4em;
+    line-height: 1.5em;
 }
 
-#content {
+blockquote {
+    font-size: 2em;
+    border-left: 8px solid var(--primary-text-color);
+    padding-left: 16px;
+    line-height: 1.25em;
+    padding: 16px;
+}
+
+blockquote p {
+    margin: 0;
+}
+
+.page-content {
     flex: 1; 
     padding: 24px 48px;
+    max-width: 100vw;
+    width: 60ch;
+    align-self: center;
+    align-items: flex-start;
+}
+
+.page-content h1 {
+    font-size: 2em;
 }
 
 /* Navigation menu styles */
@@ -38,7 +59,7 @@ main {
 .header {
     max-height: 64px;
     display: flex;
-    align-items: stretch;
+    align-items: center;
     justify-content: space-between;
     background: var(--primary-color);
     color: var(--primary-text-color);
@@ -50,20 +71,9 @@ main {
     height: 100%;
 }
 
-.caret {
-    display: none;
-    width: 0;
-    height: 0;
-    margin-left: 4px;
-    vertical-align: middle;
-    border-top: 4px dashed;
-    border-right: 4px solid transparent;
-    border-left: 4px solid transparent;
-}
-
 .main-nav {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     justify-content: flex-end;
 }
 
@@ -76,12 +86,17 @@ main {
     padding: 0;
     margin: 0;
     display: flex;
-    height: 48px;
+}
+
+.main-nav > ul {
+    height: 40px;
 }
 
 .main-nav div {
     flex: 1;
     text-align: center;
+    line-height: 40px;
+    width: 100%;
 }
 
 .main-nav .sub-menu, .main-nav .sub-menu ul {
@@ -95,12 +110,12 @@ main {
 .main-nav .sub-menu > ul {
     visibility: hidden;
     position: absolute;
-    top: 48px;
+    top: 40px;
+    flex-direction: column;
  }
 
- .main-nav .sub-menu .sub {
+ .main-nav .sub-menu {
     flex-direction: column;
-    background: var(--primary-color);
     cursor: pointer;
  }
 
@@ -109,29 +124,28 @@ main {
     padding: 8px;
  }
 
- .main-nav .sub-menu {
-     border-radius: 8px 8px 0px 0px;
- }
-
- .main-nav .sub-menu ul:last-child {
-    border-radius: 0px 0px 8px 8px;
-}
 
  .main-nav .sub-menu .sub li a {
-    color: var(--primary-color);
+    color: var(--primary-text-color);
     text-decoration: none;
   }
 
-  .main-nav .sub-menu:hover {
-    background-color: var(--primary-text-color);
-    color: var(--primary-color);
+  .main-nav .sub-menu:hover div {
+      height: 36px;
+      line-height: 36px;
+      padding-top: 2px; 
   }
 
 .main-nav .sub-menu:hover .sub, .main-nav .sub-menu:hover .sub ul {
     visibility: visible;
-    background-color: var(--primary-text-color);
-    color: var(--primary-color);
-    
+}
+
+.main-nav .sub-menu:hover .sub li {
+    background-color: var(--primary-color);
+}
+
+.main-nav .sub-menu:hover .sub li:hover {
+    background-color: hsl(210, 80%, 95%);
 }
 
 .login {
@@ -148,21 +162,20 @@ main {
 /* Homepage styles */
 
 .hero {
-    padding: 16px;
     background-size: cover;
     background-position: center 5%;
     height: 50vh;
-    width: 100%;
+    width: calc(100% - (48px * 2));
     display: flex;
     align-items: flex-end;
     outline: 4px solid white;
     outline-offset: -10px;
-    margin-bottom: 48px;
+    margin: 48px;
 }
  
 .hero blockquote {
+    font-size: 2.5em;
     background: rgba(255, 255, 255, 0.75);
-    padding: 16px;
 }
 
 .mission {
@@ -174,7 +187,6 @@ main {
     align-items: center;
     margin-bottom: 48px;
     padding: 24px;
-    line-height: 1.5em;
     
 }
 
@@ -187,19 +199,29 @@ main {
     content: '';
     text-align: center;
     width: 500px;
+    max-width: 80vw;
     height: 4px;
     display: block;
     border-radius: 8px;
     background: linear-gradient(90deg, red 0%, red 20%, orange 20%, orange 40%, cyan 40%, cyan 60%, green 60%, green 80%, hotpink 80%);
 }
 
+.main-nav .sub-menu:hover div::after {
+    content: '';
+    height: 2px;
+    display: block;
+    border-radius: 8px;
+    background: linear-gradient(90deg, red 0%, red 20%, orange 20%, orange 40%, cyan 40%, cyan 60%, green 60%, green 80%, hotpink 80%);
+    width: 100%;
+}
+
 .mission p {
-    width: 45ch;
+    max-width: 45ch;
 }
 
 .values {
     display: flex;
-    margin-bottom: 112px;
+    margin-bottom: 84px;
     flex-direction: column;
     align-items: center;
 }
@@ -209,7 +231,7 @@ main {
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1040px;
+    max-width: 1000px;
 }
 
 .value {
@@ -221,17 +243,13 @@ main {
 .location {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    margin-bottom: 48px;
 }
 
-.location.details {
+.location .details {
     flex-direction: column;
-}
-
-blockquote {
-    font-size: 2.5em;
-    border-left: 16px solid var(--primary-text-color);
-    padding-left: 16px; 
+    margin-right: 48px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -244,6 +262,11 @@ blockquote {
     .main-nav ul {
         visibility: hidden;
     }
+
+    .location .map {
+        display: none;
+    }
+    
 }
 
 .footer {
