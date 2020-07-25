@@ -149,21 +149,20 @@ blockquote p {
 }
 
 .login {
-    height: 2em;
-    align-self: center;
     background: var(--primary-text-color);
     color: var(--primary-color);
-    padding: 4px 16px;
+    padding: 8px 16px;
     border-radius: 8px;
     cursor: pointer;
     margin-left: 16px;
+    white-space: nowrap;
 }
 
 /* Homepage styles */
 
 .hero {
     background-size: cover;
-    background-position: center 5%;
+    background-position: center;
     height: 50vh;
     width: calc(100% - (48px * 2));
     display: flex;
