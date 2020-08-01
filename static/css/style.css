@@ -57,105 +57,107 @@ blockquote p {
 /* Navigation menu styles */
 
 .header {
-    max-height: 64px;
+    height: 52px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--primary-color);
-    color: var(--primary-text-color);
-    padding: 0px 48px;
-    margin-top: 24px;
+    margin: 24px 48px 0;
+    max-width: 100vw;
 }
 
-.header .logo img {
+.header .logo, .header .logo img  {
     height: 100%;
 }
 
-.main-nav {
+#main-nav {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    flex: 1;
+    margin-left: 48px;
 }
 
-.main-nav .mobile {
+.open-menu, .close-menu {
     display: none;
 }
 
-.main-nav ul {
+#main-nav ul {
     list-style: none;
     padding: 0;
-    margin: 0;
     display: flex;
 }
 
-.main-nav > ul {
-    height: 40px;
+#main-nav > ul {
+    flex: 1;
+    max-width: 900px;
 }
 
-.main-nav div {
+#main-nav div {
     flex: 1;
     text-align: center;
     line-height: 40px;
     width: 100%;
 }
 
-.main-nav .sub-menu, .main-nav .sub-menu ul {
+#main-nav .sub-menu, #main-nav .sub-menu ul {
     display: flex;
-    width: 14ch;
     position: relative;
     align-items: center;
     justify-content: center;
  }
 
-.main-nav .sub-menu > ul {
-    visibility: hidden;
-    position: absolute;
-    top: 40px;
-    flex-direction: column;
- }
-
- .main-nav .sub-menu {
+ #main-nav .sub-menu {
+    flex: 1;
     flex-direction: column;
     cursor: pointer;
  }
 
- .main-nav .sub-menu .sub li {
+ #main-nav .sub-menu .sub li {
     width: 100%;
     padding: 8px;
  }
 
 
- .main-nav .sub-menu .sub li a {
+ #main-nav .sub-menu .sub a {
     color: var(--primary-text-color);
     text-decoration: none;
+    width: 100%;
   }
 
-  .main-nav .sub-menu:hover div {
-      height: 36px;
-      line-height: 36px;
-      padding-top: 2px; 
-  }
 
-.main-nav .sub-menu:hover .sub, .main-nav .sub-menu:hover .sub ul {
-    visibility: visible;
-}
 
-.main-nav .sub-menu:hover .sub li {
+
+
+#main-nav .sub-menu:hover .sub li {
     background-color: var(--primary-color);
 }
 
-.main-nav .sub-menu:hover .sub li:hover {
+#main-nav .sub-menu:hover .sub li:hover {
     background-color: hsl(210, 80%, 95%);
 }
 
-.login {
+.button {
     background: var(--primary-text-color);
     color: var(--primary-color);
-    padding: 8px 16px;
     border-radius: 8px;
     cursor: pointer;
-    margin-left: 16px;
     white-space: nowrap;
+    line-height: 24px;
+    text-align: center;
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 8px 16px;
+    
+}
+
+.close-menu {
+    background: var(--primary-color);
+    color: var(--primary-text-color);
+    align-self: flex-end;
+}
+
+.login {
+    padding: 8px 16px;
+    width: 8ch;
 }
 
 /* Homepage styles */
@@ -186,7 +188,6 @@ blockquote p {
     align-items: center;
     margin-bottom: 48px;
     padding: 24px;
-    
 }
 
 .values h2, .mission h2 {
@@ -203,15 +204,6 @@ blockquote p {
     display: block;
     border-radius: 8px;
     background: linear-gradient(90deg, red 0%, red 20%, orange 20%, orange 40%, cyan 40%, cyan 60%, green 60%, green 80%, hotpink 80%);
-}
-
-.main-nav .sub-menu:hover div::after {
-    content: '';
-    height: 2px;
-    display: block;
-    border-radius: 8px;
-    background: linear-gradient(90deg, red 0%, red 20%, orange 20%, orange 40%, cyan 40%, cyan 60%, green 60%, green 80%, hotpink 80%);
-    width: 100%;
 }
 
 .mission p {
@@ -244,28 +236,127 @@ blockquote p {
     display: flex;
     justify-content: center;
     margin-bottom: 48px;
+    flex-wrap: wrap;
 }
 
 .location .details {
-    flex-direction: column;
     margin-right: 48px;
+    flex: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+}
+
+.contact-us, .locate-us {
+    flex: 1;
+}
+
+@media only screen and (max-width: 1020px) {
+    .location .details {
+        flex: 1;
+        flex-direction: row;
+        margin-right: 0;
+        margin-bottom: 24px;
+    }
+    .location {
+        padding: 0 48px;
+    }
+}
+
+@media only screen and (min-width: 864px) {
+    .login {
+        margin-left: 1rem;
+    }
+
+    #main-nav .sub-menu:hover div {
+        height: 36px;
+        line-height: 36px;
+        padding-top: 2px; 
+    }
+
+    #main-nav .sub-menu:hover div::after {
+        content: '';
+        height: 2px;
+        display: block;
+        border-radius: 8px;
+        background: linear-gradient(90deg, red 0%, red 20%, orange 20%, orange 40%, cyan 40%, cyan 60%, green 60%, green 80%, hotpink 80%);
+        width: 100%;
+    }
+
+    #main-nav .sub-menu > ul {
+        visibility: hidden;
+        position: absolute;
+        top: 40px;
+        flex-direction: column;
+        width: 100%;
+     }
+
+    #main-nav .sub-menu:hover .sub, #main-nav .sub-menu:hover .sub ul {
+        visibility: visible;
+    }
+}
+
+@media only screen and (max-width: 864px) {
+    .open-menu, .close-menu {
+        flex: 0;
+        display: inline;
+    }
+
+    #main-nav {
+        position: fixed;
+        top: 0;
+        right: -20ch;
+        flex-direction: column;
+        height: 100vh;
+        width: 20ch;
+        background: rgb(255, 255, 255, 0.99);
+        overflow: scroll;
+        transition: right 0.75s cubic-bezier(0.75, 0, 0.25, 1);
+    }
+
+    #main-nav.visible {
+        right: 0;
+    }
+
+    #main-nav > ul {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+    }
+
+    #main-nav .sub-menu {
+        flex: 0;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    #main-nav .sub-menu > ul {
+        flex-direction: column;
+     }
+
+     .sub-menu div:after {
+        content: '';
+        height: 2px;
+        display: block;
+        border-radius: 8px;
+        background: linear-gradient(90deg, red 0%, red 20%, orange 20%, orange 40%, cyan 40%, cyan 60%, green 60%, green 80%, hotpink 80%);
+        width: 30%;
+        left: 35%;
+        position: relative;
+     }
+
+     ul.sub {
+         text-align: center;
+         width: 100%;
+     }
 }
 
 @media only screen and (max-width: 600px) {
-    .main-nav .mobile {
-        height: 100%;
-        display: flex;
-        align-items: center;
-    }
-
-    .main-nav ul {
-        visibility: hidden;
-    }
-
     .location .map {
         display: none;
     }
-    
 }
 
 .footer {

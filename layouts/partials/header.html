@@ -1,7 +1,8 @@
 <header class="header">
-    <a href="{{ .Site.BaseURL }}" alt="Back to homepage" class="logo">{{- partial "logo.html" . -}}</a>
-	<nav class="main-nav">
-		<div class="mobile">Menu</div>
+	<a href="{{ .Site.BaseURL }}" alt="Back to homepage" class="logo">{{- partial "logo.html" . -}}</a>
+	<button onclick="showMenu()" class="open-menu button">Menu</button>
+	<nav id="main-nav">
+		<button onclick="hideMenu()" class="close-menu button">x</button>
 		<ul>
 			{{ $currentPage := . }}
 			{{ range .Site.Menus.main }}
@@ -11,13 +12,22 @@
 						<div>{{ .Name }}</div>
 						<ul class="sub">
 							{{ range .Children }}
-							<li{{if $currentPage.IsMenuCurrent "main" . }} class="active"{{end}}><a href="{{.URL}}"> {{ .Name }} </a> </li>
+							<a href="{{.URL}}"><li{{if $currentPage.IsMenuCurrent "main" . }} class="active"{{end}}> {{ .Name }} </li></a>
 							{{ end }}
 						</ul>
 					</li>
 					{{end}}
 			{{end}}
+			<a class="login button">Log In</a>
 		</ul>
-		<a class="login">Log In</a>
 	</nav>
 </header>
+<script>
+    function showMenu() {
+		document.querySelector('#main-nav').classList.add('visible')
+	}
+
+	function hideMenu() {
+		document.querySelector('#main-nav').classList.remove('visible')
+	}
+</script>
