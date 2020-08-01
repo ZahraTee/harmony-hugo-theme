@@ -122,10 +122,6 @@ blockquote p {
     width: 100%;
   }
 
-
-
-
-
 #main-nav .sub-menu:hover .sub li {
     background-color: var(--primary-color);
 }
@@ -365,4 +361,19 @@ blockquote p {
     border-top: 2px solid var(--primary-text-color);
     padding: 16px;
     flex: 0;
+}
+
+.file-download {
+    border: 2px solid var(--primary-text-color);
+    display: inline-flex;
+    padding: 24px;
+    width: 100%;
+    text-decoration: none;
+    color: var(--primary-text-color);
+    margin-bottom: 8px;
+}
+
+.file-download img {
+    height: 24px;
+    margin-right: 12px;
 }
