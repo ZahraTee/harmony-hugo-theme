@@ -1,3 +1,26 @@
 <footer class="footer">
-	{{ .Site.Title }}, {{ now.Year }}
+	<div>
+		<section>
+			<a href="{{ .Site.BaseURL }}" alt="Back to homepage" class="logo">{{- partial "logo.html" . -}}</a>
+		</section>
+		<section class="footerDetails">
+			<ul>
+				<li>
+					{{ .Site.Title }} {{ now.Year }}
+				</li>
+				<li>
+					80 Gayton Road, Harrow, HA1 2LS
+				</li>
+				<li>
+					T: 0208 427 4688
+				</li>
+				<li>
+					E: admin@harmonyprimaryschool.co.uk
+				</li>
+			</ul>
+		</section>
+		<section>
+			<a href="{{ .Site.BaseURL }}" alt="Back to homepage" class="psheAssocicationLogo">{{- partial "psheAssocicationLogo.html" . -}}</a>
+		</section>
+	</div>
 </footer>
