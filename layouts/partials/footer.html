@@ -1,9 +1,19 @@
 <footer class="footer">
-	<div>
-		<section>
+	<section class="footerLogos">
+		<div>
 			<a href="{{ .Site.BaseURL }}" alt="Back to homepage" class="logo">{{- partial "logo.html" . -}}</a>
+		</div>
+		<section>
+			<div>
+				<a href="https://www.anti-bullyingalliance.org.uk/" alt="To Anti-Bullying Alliance" class="ABALogo">{{- partial "ABALogo.html" . -}}</a>
+			</div>
+			<div>
+				<a href="https://www.pshe-association.org.uk/" alt="To PSHE Association" class="psheAssocicationLogo">{{- partial "psheAssocicationLogo.html" . -}}</a>
+			</div>
 		</section>
-		<section class="footerDetails">
+	</section>
+	<section>
+		<div class="footerDetails">
 			<ul>
 				<li>
 					{{ .Site.Title }} {{ now.Year }}
@@ -18,9 +28,6 @@
 					E: admin@harmonyprimaryschool.co.uk
 				</li>
 			</ul>
-		</section>
-		<section>
-			<a href="{{ .Site.BaseURL }}" alt="Back to homepage" class="psheAssocicationLogo">{{- partial "psheAssocicationLogo.html" . -}}</a>
-		</section>
-	</div>
+		</div>
+	</section>
 </footer>
